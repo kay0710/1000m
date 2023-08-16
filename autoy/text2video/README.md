@@ -88,24 +88,24 @@ $ pip install -r requirements.txt
 Can set some options easily at below path
 PATH: `~/user/settings.py`
 #### Subjcet options
->SUBJECT = 'Travel_EngWordsTop50' # using for video file name
-TTS_LANG = 'en' # audio language option (google tts)
-NUM_OF_WORD = 10 # max number of words in video
-DICT_NAME = 'travel50' # name of using word dictionary
+>SUBJECT = 'Travel_EngWordsTop50' # using for video file name  
+TTS_LANG = 'en' # audio language option (google tts)  
+NUM_OF_WORD = 10 # max number of words in video  
+DICT_NAME = 'travel50' # name of using word dictionary  
 #### Design options
-> RESOLUTION = 'yshorts_1500' # resolution of video
-FONT_DEFAULT = 'nanumGothic' # font type of text (except words)
-FONT_WORD = 'maruburi_bold' # font type of words
-FONT_SIZE = 30 # font size of text (except words)
-FONT_SIZE_WORD = 70 # font type of words
-BG_RANDOM = True # set the background randomly
+> RESOLUTION = 'yshorts_1500' # resolution of video  
+FONT_DEFAULT = 'nanumGothic' # font type of text (except words)  
+FONT_WORD = 'maruburi_bold' # font type of words  
+FONT_SIZE = 30 # font size of text (except words)  
+FONT_SIZE_WORD = 70 # font type of words  
+BG_RANDOM = True # set the background randomly  
 #### Video options
-> FPS = 0.6 # frames per seconds >> 0.6 = 5s/frame
-FOURCC = '.mp4' # file type of video file
+> FPS = 0.6 # frames per seconds >> 0.6 = 5s/frame  
+FOURCC = '.mp4' # file type of video file  
 #### Automation options
-> AUTO_VIDEO = True # option for make series of video
-AUTO_CONCAT = True # concatanate audio files of word and sentence
-AUTO_CLEAR = True # delete the intermediate files of audio and video
+> AUTO_VIDEO = True # option for make series of video  
+AUTO_CONCAT = True # concatanate audio files of word and sentence  
+AUTO_CLEAR = True # delete the intermediate files of audio and video  
 
 ### Data setting
 Should set 3 options to add data (below path)
