@@ -28,7 +28,7 @@ autoY - Text to Video is a program making video automatically for study language
 - Make frames using text and it becomes a video
     - Can set background and text for you video
 - Can combine audio and video
-- Usage: [Demo](##Demo)
+- Usage: [Demo](#demo)
 
 -----------
 
