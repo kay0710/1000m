@@ -3,16 +3,16 @@ make audio files using tts service
 '''
 import pandas as pd
 from gtts import gTTS
+from helpers import decor
 from helpers import INIT as init
 
+@decor.stop_watch
 def tts2mp3(arg_dict=init.seperated_dict_list, 
             arg_lang=init.tts_lang, 
             auto_concat=init.auto_concat,
             arg_path=init.inter_audio_path, 
             arg_subject=init.subject,
             arg_cols=init.columns):
-    print('[STAET] Make audio file.')
-
     file_path = arg_path + 'words/' + arg_subject + '/'
     for j in range(len(arg_dict)):
         TARGET_WORDS = arg_dict[j]
@@ -42,4 +42,3 @@ def tts2mp3(arg_dict=init.seperated_dict_list,
                 sent_file = file_path + word + '_sent.mp3'
                 tts_sentence.save(sent_file)
                 print('[SAVED] Audio file(Sentence):', sent_file)
-    print('[COMPLETE] Evry audio file is ready.')

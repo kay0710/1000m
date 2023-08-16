@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import os, sys, random
 # import datetime
+from helpers import decor
 from helpers import INIT as init
 from PIL import ImageDraw, Image
 
@@ -25,7 +26,6 @@ class T2V:
     def making_imageAraay(arg_dict, 
                           arg_cols=init.columns,
                           bg_randomness=init.bg_randeom):
-        print('\n[START] Making frame')
         frame_array = []
 
         if bg_randomness == True:
@@ -78,9 +78,9 @@ class T2V:
             bg_img_array = np.array(bg_img_pil)
             frame_array.append(bg_img_array)
             if (i+1)%5 == 0:
-                print("[Pregress] Frame:", i+1, "/", len(arg_dict))
+                print("[Process] Frame:", i+1, "/", len(arg_dict))
             elif i == len(arg_dict)-1:
-                print("[Pregress] Frame:", i+1, "/", len(arg_dict))
+                print("[Process] Frame:", i+1, "/", len(arg_dict))
 
             progress = None
 
@@ -108,6 +108,7 @@ class T2V:
         print("[END] Video is created:", filename + '\n')
 
     # automation of process
+    @decor.stop_watch
     def make_inter_video(arg_automation=init.auto_video, 
                          arg_path=init.inter_video_path, 
                          arg_subject=init.subject):
@@ -116,9 +117,6 @@ class T2V:
         for i in range(len(init.seperated_dict_list)):
             TARGET_WORDS = init.seperated_dict_list[i]
             frames = T2V.making_imageAraay(TARGET_WORDS)
-            print("[Progress] Video:", i+1, '/', (len(init.target_dict)//10)+1)
+            print("[Process] Video:", i+1, '/', (len(init.target_dict)//10)+1)
         
             T2V.saveVideo(arg_frames=frames, start_num=str(i), arg_subject=arg_subject)
-
-        print('============================')
-        print("[COMPLETE] Every video is ready\n\n")

@@ -4,6 +4,7 @@ make final output using moviepy module
 import os
 import math
 import pandas as pd
+from helpers import decor
 from helpers import INIT as init
 from moviepy.editor import VideoFileClip, AudioFileClip,\
                             CompositeAudioClip, concatenate_audioclips
@@ -36,7 +37,7 @@ def concat_audio5s(arg_word,
 
     concat = concatenate_audioclips(concat_list)
     
-    print("[Pregress] Concat elements:", len(concat_list))
+    print("[Process] Concat elements:", len(concat_list))
     print("[CHECK] Final play time:", concat.duration, "s")
     print("[END] Audio editing:", arg_word)
 
@@ -58,6 +59,7 @@ def make_compo_dict(arg_dict=init.seperated_dict_list,
         compo_dict[j] = temp_concat_list
     return compo_dict
 
+@decor.stop_watch
 def make_output(arg_subject=init.subject,
                 arg_inter_audio_path=init.inter_audio_path+'words/',
                 arg_inter_video_path=init.inter_video_path,
@@ -90,9 +92,9 @@ def make_output(arg_subject=init.subject,
         compo.close()
         video_clip.close()
         if (i+1)%5 == 0:
-                print("[Pregress] Frame:", i+1, "/", len(temp_compo_list))
+                print("[Process] Frame:", i+1, "/", len(temp_compo_list))
         elif i == len(temp_compo_dict)-1:
-            print("[Pregress] Frame:", i+1, "/", len(temp_compo_list))
+            print("[Process] Frame:", i+1, "/", len(temp_compo_list))
 
     while(auto_clear):
         ans = input("\nDo yo want to clear intermeidate files? (y/n): ")

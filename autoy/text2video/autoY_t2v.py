@@ -11,7 +11,7 @@ import time
 from helpers import tts, composer
 from helpers.t2v import T2V
 
-print("\n============================================")
+print("\n============================================+")
 print("===== Let's make contents with autoY :) =====")
 print("=============================================")
 start = time.time()
@@ -26,7 +26,7 @@ T2V.make_inter_video()
 composer.make_output()
 
 end = time.time()
-print("Total pregress time:", end - start, "s")
+print("[RECORD] Total process time:", end - start, "s")
 print("\n=========================================")
 print("===== Enjoy your output :) (from.K) =====")
 print("=========================================")
