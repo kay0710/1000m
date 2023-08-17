@@ -1,5 +1,5 @@
 '''
-example of making contents
+main code of making video contents
 - option
     - youtube shorts form
     - english words (47)

@@ -4,10 +4,10 @@ Decorator for recording process time
 import time
 
 def stop_watch(func):
+    '''
+    Timer for function runtime
+    '''
     def wrapper():
-        # str = time.time()
-        # func()
-        # end = time.time()
         if func.__name__ == 'tts2mp3':
             print('[START] Making audio files.')
             str = time.time()

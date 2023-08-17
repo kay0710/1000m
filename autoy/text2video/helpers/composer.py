@@ -9,9 +9,21 @@ from helpers import INIT as init
 from moviepy.editor import VideoFileClip, AudioFileClip,\
                             CompositeAudioClip, concatenate_audioclips
 
-def concat_audio5s(arg_word,
-                   arg_subject=init.subject,
-                   auto_concat=init.auto_concat):
+def concat_audio5s(arg_word: str,
+                   arg_subject:str | None = init.subject,
+                   auto_concat:bool | None = init.auto_concat):
+    '''
+    Concatanate audio files and make it's playtime as 5 second
+    @ Args:
+        arg_word:
+            set target word to select audio file
+        arg_subject:
+            subject of contents set by user-option
+        auto_concat:
+            T/F of option for concatanate automatically
+    @ Return:
+        concatenated audio clip
+    '''
     # will make some options
                 #    arg_mute_path=init.resource_path+'audio/',
                 #    arg_mute_sec=0.5,):
@@ -43,11 +55,21 @@ def concat_audio5s(arg_word,
 
     return concat
 
-def make_compo_dict(arg_dict=init.seperated_dict_list, 
-                    arg_cols=init.columns):
+def make_compo_dict(arg_list: list | None = init.seperated_list, 
+                    arg_cols: list | None = init.columns) -> dict:
+    '''
+    Make dictonary of all audio files using concatenated audio clips
+    @ Args:
+        arg_list:
+            list of seperated dictionaries, max word is set by user-option
+        arg_cols:
+            list of columns about data
+    @ Return:
+        dictionary
+    '''
     compo_dict = {}
-    for j in range(len(arg_dict)):
-        TARGET_WORDS = arg_dict[j]
+    for j in range(len(arg_list)):
+        TARGET_WORDS = arg_list[j]
         temp_concat_list = []
         df = pd.DataFrame(TARGET_WORDS, columns=arg_cols)
 
@@ -60,13 +82,28 @@ def make_compo_dict(arg_dict=init.seperated_dict_list,
     return compo_dict
 
 @decor.stop_watch
-def make_output(arg_subject=init.subject,
-                arg_inter_audio_path=init.inter_audio_path+'words/',
-                arg_inter_video_path=init.inter_video_path,
-                arg_output_path=init.output_path,
-                arg_fourcc=init.fourcc,
-                auto_clear=init.auto_clear):
-    
+def make_output(arg_subject: str | None = init.subject,
+                arg_inter_audio_path: str | None = init.inter_audio_path+'words/',
+                arg_inter_video_path: str | None = init.inter_video_path,
+                arg_output_path: str | None = init.output_path,
+                arg_fourcc: str | None = init.fourcc,
+                auto_clear: bool | None = init.auto_clear):
+    '''
+    Process of making final output
+    @ Args:
+        arg_subject:
+            set target subject to select audio file
+        arg_inter_audio_path:
+            path of intermediate audio files
+        arg_inter_video_path:
+            path of intermediate video files
+        arg_output_path:
+            path of output files
+        arg_fourcc:
+            CODEC for video file
+        auto_clear:
+            T/F option for clearing intermediate files
+    '''
     temp_compo_dict = make_compo_dict()
     for j in range(len(temp_compo_dict)):
         compo_list = []
@@ -97,6 +134,7 @@ def make_output(arg_subject=init.subject,
             print("[Process] Frame:", i+1, "/", len(temp_compo_list))
 
     while(auto_clear):
+        cnt = 0
         ans = input("\nDo yo want to clear intermeidate files? (y/n): ")
         if ans == 'n':
             auto_clear = False
@@ -113,4 +151,10 @@ def make_output(arg_subject=init.subject,
                 os.remove(os.path.join(dir_video, f))
             print("[DELETE] Intermediate video files are deleted")
         else:
-            print("Plz answer wtih 'y' or 'n'.")
+            if cnt < 3:
+                print("Plz answer wtih 'y' or 'n' ({cnt}/3)".format(cnt=cnt+1))
+                cnt += 1
+            else:
+                auto_clear = False
+                print("Intermediate files are remained!")
+                break

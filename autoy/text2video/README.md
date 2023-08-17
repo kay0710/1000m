@@ -19,6 +19,11 @@ autoY - Text to Video is a program making video automatically for study language
 ## Tech
 ![stack_anaconda](https://img.shields.io/badge/Anaconda-44a833?style=for-the-badge&logo=anaconda&logoColor=white) ![stack_python](https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![stack_opencv](https://img.shields.io/badge/OpenCV-5c3ee8?style=for-the-badge&logo=opencv&logoColor=white) ![stack_googlecloud](https://img.shields.io/badge/google_tts-4285f4?style=for-the-badge&logo=googlecloud&logoColor=white) ![stack_moviepy](https://img.shields.io/badge/moviepy-f9d72c?style=for-the-badge&logo=&logoColor=white)
 
+- anaconda
+- python
+- opencv
+- google cloud for tts
+- moviepy
 -----------
 
 ## Features
@@ -142,6 +147,6 @@ PATH: `~/text2video/output`
 
 MIT
 
-**Free Software!!**
-**Feedback on the project is always welcome**
+**Free Software!!**  
+**Feedback on the project is always welcome**  
 **Contact: reddevil8407@gmail.com**

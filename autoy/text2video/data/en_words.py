@@ -1,7 +1,6 @@
 '''
 sample data from ChatGPT
 '''
-# columns = ["단어", "뜻", "문장 예시"]
 columns = ["word", "meaning", "sentence"]
 
 travel_word50 = [ # 47

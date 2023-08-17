@@ -14,6 +14,9 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 # t2v class
 class T2V:
+    '''
+    Class of fucntions for "text to video" process
+    '''
     def __init__(self):
         print("[SETTING] Check settings ")
         print('========= Resolution:', init.resolution)
@@ -23,9 +26,21 @@ class T2V:
         print("========= Word Font:", init.font_dict[init.font_word], init.font_size_word)
 
     # setting of video
-    def making_imageAraay(arg_dict, 
-                          arg_cols=init.columns,
-                          bg_randomness=init.bg_randeom):
+    def making_imageAraay(arg_list: list, 
+                          arg_cols: list | None = init.columns,
+                          bg_randomness: bool | None = init.bg_randeom):
+        '''
+        Make list of frames using data
+        @ Args:
+            arg_list:
+                list of target data for make list of frames
+            arg_cols:
+                list of columns about data
+            bg_randomness:
+                T/F options for setting randon background
+        @ Return:
+            list of frames
+        '''
         frame_array = []
 
         if bg_randomness == True:
@@ -45,13 +60,13 @@ class T2V:
         xy_meaning = (init.width*(1/2), init.height*(2.6/5))
         xy_sentence = (init.width*(1/2), init.height*(4/5))
 
-        df = pd.DataFrame(arg_dict, columns=arg_cols)
+        df = pd.DataFrame(arg_list, columns=arg_cols)
 
-        for i in range(len(arg_dict)):
+        for i in range(len(arg_list)):
             word = df[i:i+1]['word'].values[0]
             meaning = df[i:i+1]['meaning'].values[0]
             sentence = df[i:i+1]['sentence'].values[0]
-            progress = str(i+1) + "/" + str(len(arg_dict))
+            progress = str(i+1) + "/" + str(len(arg_list))
 
             if len(bg_img_path) == 0:
                 bg_img = np.full(shape=(init.height,init.width,3), 
@@ -78,9 +93,9 @@ class T2V:
             bg_img_array = np.array(bg_img_pil)
             frame_array.append(bg_img_array)
             if (i+1)%5 == 0:
-                print("[Process] Frame:", i+1, "/", len(arg_dict))
-            elif i == len(arg_dict)-1:
-                print("[Process] Frame:", i+1, "/", len(arg_dict))
+                print("[Process] Frame:", i+1, "/", len(arg_list))
+            elif i == len(arg_list)-1:
+                print("[Process] Frame:", i+1, "/", len(arg_list))
 
             progress = None
 
@@ -88,11 +103,25 @@ class T2V:
         return frame_array
     
     # function for make frames to video
-    def saveVideo(start_num,
-                  arg_frames,
-                  arg_subject=init.subject,                
-                  arg_fps=init.fps,
-                  arg_fourcc=init.fourcc):
+    def saveVideo(start_num: str,
+                  arg_frames: list,
+                  arg_subject: str | None = init.subject,                
+                  arg_fps: float | None = init.fps,
+                  arg_fourcc: str | None = init.fourcc):
+        '''
+        Function for saving video file using frames
+        @ Args:
+            start_num:
+                start number, set for video file name
+            arg_frames:
+                list of frames made with bg, words data
+            arg_subject:
+                subject of contents set by user-option
+            arg_fps:
+                frames per seconds
+            arg_fourcc:
+                CODEC for video file
+        '''
         filename = init.inter_video_path + arg_subject + '/' + start_num + arg_fourcc
         out_video = cv2.VideoWriter(filename=filename, 
                                     fourcc=cv2.VideoWriter_fourcc(*init.fourcc_dict[arg_fourcc]), 
@@ -109,13 +138,23 @@ class T2V:
 
     # automation of process
     @decor.stop_watch
-    def make_inter_video(arg_automation=init.auto_video, 
-                         arg_path=init.inter_video_path, 
-                         arg_subject=init.subject):
+    def make_inter_video(arg_path: str | None = init.inter_video_path, 
+                         arg_subject: str | None = init.subject,
+                         arg_list: list | None = init.seperated_list):
+        '''
+        Process of making video file
+        @ Args:
+            arg_path:
+                path of intermediate video (output of function)
+            arg_subject:
+                subject of contents set by user-option
+            arg_list:
+                list of seperated dictionaries, max word is set by user-option
+        '''
         init.createDirectory(path=arg_path, folder_name=arg_subject)
 
-        for i in range(len(init.seperated_dict_list)):
-            TARGET_WORDS = init.seperated_dict_list[i]
+        for i in range(len(arg_list)):
+            TARGET_WORDS = arg_list[i]
             frames = T2V.making_imageAraay(TARGET_WORDS)
             print("[Process] Video:", i+1, '/', (len(init.target_dict)//10)+1)
         

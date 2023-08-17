@@ -1,6 +1,12 @@
 '''
 helpers package for t2v
 '''
+
+__author__  = "kay <reddevil8407@gmail.com>"
+__status__  = "production"
+__version__ = "2.0.0"
+__date__    = "13 Aug 2023"
+
 import sys, os
 import pandas as pd
 from PIL import ImageFont
@@ -10,12 +16,10 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from data import en_words
 from user.settings import SETTINGS as user
 
-__author__  = "kay <reddevil8407@gmail.com>"
-__status__  = "production"
-__version__ = "2.0.0"
-__date__    = "13 Aug 2023"
-
 class INIT:
+    '''
+    Class of initialization user-option driven settings
+    '''
     prj_path = os.getcwd()
     data_path = prj_path + '/data/'
     output_path = prj_path + '/output/'
@@ -47,11 +51,11 @@ class INIT:
     # audio = user.AUDIO
     # start_idx = user.START_IDX
 
-    seperated_dict_list = []
-    target_dict = en_words.target_word_dict[dict_name]
-    for stx in range(0, ((len(target_dict)+numOFword)//numOFword)):
+    seperated_list = []
+    target_list = en_words.target_word_dict[dict_name]
+    for stx in range(0, ((len(target_list)+numOFword)//numOFword)):
         etx = stx*10+numOFword
-        seperated_dict_list.append(target_dict[stx*10:etx])
+        seperated_list.append(target_list[stx*10:etx])
 
     resolution_dict = {'square_500': (500,500,3),
                     'square_1000': (1000,1000,3),
@@ -96,7 +100,8 @@ class INIT:
                 '.wmv': 'WMV1'
     }
 
-    def createDirectory(path, folder_name=subject):
+    def createDirectory(path: str,
+                        folder_name: str | None = subject):
         directory = path + folder_name
         try:
             if not os.path.exists(directory):

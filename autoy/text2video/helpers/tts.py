@@ -7,15 +7,31 @@ from helpers import decor
 from helpers import INIT as init
 
 @decor.stop_watch
-def tts2mp3(arg_dict=init.seperated_dict_list, 
-            arg_lang=init.tts_lang, 
-            auto_concat=init.auto_concat,
-            arg_path=init.inter_audio_path, 
-            arg_subject=init.subject,
-            arg_cols=init.columns):
+def tts2mp3(arg_list: list | None = init.seperated_list, 
+            arg_lang: str | None = init.tts_lang, 
+            auto_concat: bool | None = init.auto_concat,
+            arg_path: str | None = init.inter_audio_path, 
+            arg_subject: str | None = init.subject,
+            arg_cols: list | None = init.columns):
+    '''
+    Make mp3 file using tts
+    @ Args:
+        arg_list:
+            list of seperated dictionaries, max word is set by user-option
+        arg_lang:
+            language option for tts, set by user-option
+        auto_concat:
+            T/F option for concatenate audio files of word and sentece
+        arg_path:
+            path of output audio file
+        arg_subject:
+            set target subject to select audio file
+        arg_cols:
+            list of columns about data
+    '''
     file_path = arg_path + 'words/' + arg_subject + '/'
-    for j in range(len(arg_dict)):
-        TARGET_WORDS = arg_dict[j]
+    for j in range(len(arg_list)):
+        TARGET_WORDS = arg_list[j]
         df = pd.DataFrame(TARGET_WORDS, columns=arg_cols)
 
         for i in range(len(TARGET_WORDS)):
