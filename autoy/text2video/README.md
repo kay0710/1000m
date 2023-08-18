@@ -41,19 +41,19 @@ autoY - Text to Video is a program making video automatically for study language
 
 1. autoY recommand using [Anaconda](https://www.anaconda.com/) **ver 22.9.0** to run.
 
-Create conda environment with python **ver 3.10.0**
-```sh
-$ conda create -n <your_env_name> python=3.10
-...
-$ conda activate your_env_name
-```
+    Create conda environment with python **ver 3.10.0**
+    ```sh
+    $ conda create -n <your_env_name> python=3.10
+    ...
+    $ conda activate your_env_name
+    ```
 
 2. Install the dependencies and devDependencies using **resuirements.txt**
 
-```sh
-$ cd autoy/text2video
-$ pip install -r requirements.txt
-```
+    ```sh
+    $ cd autoy/text2video
+    $ pip install -r requirements.txt
+    ```
 
 -----------
 
