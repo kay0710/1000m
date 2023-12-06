@@ -1,0 +1,2 @@
+credits:19.5
+default_path:./bg_editor/data
