@@ -24,17 +24,6 @@ Give me the house - Search the LH homepage for checking new notification
 - pandas
 -----------
 
-## Features
-
-- Make audio using TTS service
-    - Can select language, voice, accent (See detail: [Google TTS](https://cloud.google.com/text-to-speech/docs/voices?hl=ko))
-- Make frames using text and it becomes a video
-    - Can set background and text for you video
-- Can combine audio and video
-- Usage: [Demo](#demo)
-
------------
-
 ## Installation
 
 1. autoY recommand using [Anaconda](https://www.anaconda.com/) **ver 22.9.0** to run.
