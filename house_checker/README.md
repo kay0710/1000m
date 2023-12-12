@@ -30,7 +30,7 @@ Give me the house - Search the LH homepage for checking new notification
 
     Create conda environment with python **ver 3.11.5**
     ```sh
-    $ conda create -n <your_env_name> python=3.10
+    $ conda create -n <your_env_name> python=3.11.5
     ...
     $ conda activate your_env_name
     ```
