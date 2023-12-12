@@ -1,1 +1,80 @@
+# house_checker
 
+1. Give me the house
+   current ver0.2
+
+-----------
+
+## Introduction
+
+Give me the house - Search the LH homepage for checking new notification
+
+- ✨ You can check automatically ✨
+
+-----------
+
+## Tech
+![stack_anaconda](https://img.shields.io/badge/Anaconda-44a833?style=for-the-badge&logo=anaconda&logoColor=white) ![stack_python](https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![stack_selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white) ![stack_pandas](https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+
+
+- anaconda
+- python
+- pyqt5
+- selenium
+- pandas
+-----------
+
+## Features
+
+- Make audio using TTS service
+    - Can select language, voice, accent (See detail: [Google TTS](https://cloud.google.com/text-to-speech/docs/voices?hl=ko))
+- Make frames using text and it becomes a video
+    - Can set background and text for you video
+- Can combine audio and video
+- Usage: [Demo](#demo)
+
+-----------
+
+## Installation
+
+1. autoY recommand using [Anaconda](https://www.anaconda.com/) **ver 22.9.0** to run.
+
+    Create conda environment with python **ver 3.11.5**
+    ```sh
+    $ conda create -n <your_env_name> python=3.10
+    ...
+    $ conda activate your_env_name
+    ```
+
+2. Install the dependencies and devDependencies using **resuirements.txt**
+
+    ```sh
+    $ cd house_checker
+    $ pip install -r requirements.txt
+    ```
+-----------
+
+## Tree (Directory)
+```txt
+house_checker
+│  give_me_the_house_cli_ver.py
+│  give_me_the_house_v0.2.py
+└─result
+        lh_분양_20231211_164157.csv
+        lh_분양_20231211_164818.csv
+```
+
+-----------
+## Under development
+- Searching every categories automatically 
+- Setting for keywords of interest and alarm
+- change the sw structure
+-----------
+
+## License
+
+MIT
+
+**Free Software!!**  
+**Feedback on the project is always welcome**  
+**Contact: reddevil8407@gmail.com**
