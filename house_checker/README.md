@@ -1,7 +1,9 @@
 # house_checker
 
-1. Give me the house
-   current ver0.2
+1. Give me the house (current ver1.0)
+   History
+   - ver0.2 23.12.12
+   - ver1.0 23.12.15
 
 -----------
 
@@ -15,7 +17,6 @@ Give me the house - Search the LH homepage for checking new notification
 
 ## Tech
 ![stack_anaconda](https://img.shields.io/badge/Anaconda-44a833?style=for-the-badge&logo=anaconda&logoColor=white) ![stack_python](https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![stack_selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white) ![stack_pandas](https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
-
 
 - anaconda
 - python
@@ -46,18 +47,17 @@ Give me the house - Search the LH homepage for checking new notification
 ## Tree (Directory)
 ```txt
 house_checker
-│  give_me_the_house_cli_ver.py
-│  give_me_the_house_v0.2.py
+│  give_me_the_housepy
 └─result
         lh_분양_20231211_164157.csv
         lh_분양_20231211_164818.csv
 ```
 
 -----------
-## Under development
+## What's new at Ver1.0
 - Searching every categories automatically 
 - Setting for keywords of interest and alarm
-- change the sw structure
+- Change the sw structure
 -----------
 
 ## License
