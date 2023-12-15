@@ -2,8 +2,8 @@
 
 1. Give me the house (current ver1.0)
    History
-   - ver0.2 23.12.12
-   - ver1.0 23.12.15
+   - ver0.2 (23/Dec/12)
+   - ver1.0 (23/Dec/15)
 
 -----------
 
